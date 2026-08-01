@@ -12,6 +12,11 @@
 //     "https://assets.mailerlite.com/jsonp/123456/forms/789/subscribe")
 export const MAILING_LIST_ACTION = "";
 
+// 1b) MAILING LIST SIGNUP PAGE (always this link — do not change)
+//     Used whenever MAILING_LIST_ACTION above is blank: the signup button
+//     sends readers straight to the MailerLite hosted signup page.
+export const MAILING_LIST_URL = "https://bit.ly/4w421O5";
+
 // 2) SOCIAL LINKS
 //    Paste your real profile URLs. "#" means "no link yet".
 export const SOCIAL_INSTAGRAM = "#";

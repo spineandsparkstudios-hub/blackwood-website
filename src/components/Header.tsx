@@ -48,11 +48,11 @@ export default function Header() {
 
           <div className="hidden md:flex items-center">
             <Link 
-              to="/books/i-accidentally-married-a-vampire"
+              to="/books"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#C9A24B] to-[#E8B4C0] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#1A1418] hover:opacity-90 transition-opacity shadow-lg shadow-black/20"
             >
               <Heart className="h-3.5 w-3.5 fill-current" />
-              Featured Release
+              New Releases
             </Link>
           </div>
 
@@ -109,12 +109,12 @@ export default function Header() {
             </Link>
             <div className="pt-4">
               <Link
-                to="/books/i-accidentally-married-a-vampire"
+                to="/books"
                 onClick={() => setIsOpen(false)}
                 className="flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#C9A24B] to-[#E8B4C0] py-3 text-sm font-semibold uppercase tracking-wider text-[#1A1418] shadow-lg hover:opacity-90 transition-opacity"
               >
                 <Heart className="h-4 w-4 fill-current" />
-                Featured Release
+                New Releases
               </Link>
             </div>
           </div>

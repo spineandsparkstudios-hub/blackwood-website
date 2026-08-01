@@ -9,29 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BooksRouteImport } from './routes/books'
-import { Route as AuthorsRouteImport } from './routes/authors'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BooksIAccidentallyMarriedAVampireRouteImport } from './routes/books.i-accidentally-married-a-vampire'
-import { Route as AuthorsZoraMonroeRouteImport } from './routes/authors.zora-monroe'
-import { Route as AuthorsScarlettValeRouteImport } from './routes/authors.scarlett-vale'
-import { Route as AuthorsEverlyQuinnRouteImport } from './routes/authors.everly-quinn'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthorsRouteImport } from './routes/authors'
+import { Route as BooksRouteImport } from './routes/books'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthorsAuthorSlugRouteImport } from './routes/authors.$authorSlug'
+import { Route as BooksBookSlugRouteImport } from './routes/books.$bookSlug'
 
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BooksRoute = BooksRouteImport.update({
-  id: '/books',
-  path: '/books',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthorsRoute = AuthorsRouteImport.update({
-  id: '/authors',
-  path: '/authors',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -39,31 +27,30 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AuthorsRoute = AuthorsRouteImport.update({
+  id: '/authors',
+  path: '/authors',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BooksIAccidentallyMarriedAVampireRoute =
-  BooksIAccidentallyMarriedAVampireRouteImport.update({
-    id: '/i-accidentally-married-a-vampire',
-    path: '/i-accidentally-married-a-vampire',
-    getParentRoute: () => BooksRoute,
-  } as any)
-const AuthorsZoraMonroeRoute = AuthorsZoraMonroeRouteImport.update({
-  id: '/zora-monroe',
-  path: '/zora-monroe',
+const BooksRoute = BooksRouteImport.update({
+  id: '/books',
+  path: '/books',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthorsAuthorSlugRoute = AuthorsAuthorSlugRouteImport.update({
+  id: '/$authorSlug',
+  path: '/$authorSlug',
   getParentRoute: () => AuthorsRoute,
 } as any)
-const AuthorsScarlettValeRoute = AuthorsScarlettValeRouteImport.update({
-  id: '/scarlett-vale',
-  path: '/scarlett-vale',
-  getParentRoute: () => AuthorsRoute,
-} as any)
-const AuthorsEverlyQuinnRoute = AuthorsEverlyQuinnRouteImport.update({
-  id: '/everly-quinn',
-  path: '/everly-quinn',
-  getParentRoute: () => AuthorsRoute,
+const BooksBookSlugRoute = BooksBookSlugRouteImport.update({
+  id: '/$bookSlug',
+  path: '/$bookSlug',
+  getParentRoute: () => BooksRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -72,10 +59,8 @@ export interface FileRoutesByFullPath {
   '/authors': typeof AuthorsRouteWithChildren
   '/books': typeof BooksRouteWithChildren
   '/contact': typeof ContactRoute
-  '/authors/everly-quinn': typeof AuthorsEverlyQuinnRoute
-  '/authors/scarlett-vale': typeof AuthorsScarlettValeRoute
-  '/authors/zora-monroe': typeof AuthorsZoraMonroeRoute
-  '/books/i-accidentally-married-a-vampire': typeof BooksIAccidentallyMarriedAVampireRoute
+  '/authors/$authorSlug': typeof AuthorsAuthorSlugRoute
+  '/books/$bookSlug': typeof BooksBookSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,10 +68,8 @@ export interface FileRoutesByTo {
   '/authors': typeof AuthorsRouteWithChildren
   '/books': typeof BooksRouteWithChildren
   '/contact': typeof ContactRoute
-  '/authors/everly-quinn': typeof AuthorsEverlyQuinnRoute
-  '/authors/scarlett-vale': typeof AuthorsScarlettValeRoute
-  '/authors/zora-monroe': typeof AuthorsZoraMonroeRoute
-  '/books/i-accidentally-married-a-vampire': typeof BooksIAccidentallyMarriedAVampireRoute
+  '/authors/$authorSlug': typeof AuthorsAuthorSlugRoute
+  '/books/$bookSlug': typeof BooksBookSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -95,10 +78,8 @@ export interface FileRoutesById {
   '/authors': typeof AuthorsRouteWithChildren
   '/books': typeof BooksRouteWithChildren
   '/contact': typeof ContactRoute
-  '/authors/everly-quinn': typeof AuthorsEverlyQuinnRoute
-  '/authors/scarlett-vale': typeof AuthorsScarlettValeRoute
-  '/authors/zora-monroe': typeof AuthorsZoraMonroeRoute
-  '/books/i-accidentally-married-a-vampire': typeof BooksIAccidentallyMarriedAVampireRoute
+  '/authors/$authorSlug': typeof AuthorsAuthorSlugRoute
+  '/books/$bookSlug': typeof BooksBookSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -108,10 +89,8 @@ export interface FileRouteTypes {
     | '/authors'
     | '/books'
     | '/contact'
-    | '/authors/everly-quinn'
-    | '/authors/scarlett-vale'
-    | '/authors/zora-monroe'
-    | '/books/i-accidentally-married-a-vampire'
+    | '/authors/$authorSlug'
+    | '/books/$bookSlug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -119,10 +98,8 @@ export interface FileRouteTypes {
     | '/authors'
     | '/books'
     | '/contact'
-    | '/authors/everly-quinn'
-    | '/authors/scarlett-vale'
-    | '/authors/zora-monroe'
-    | '/books/i-accidentally-married-a-vampire'
+    | '/authors/$authorSlug'
+    | '/books/$bookSlug'
   id:
     | '__root__'
     | '/'
@@ -130,10 +107,8 @@ export interface FileRouteTypes {
     | '/authors'
     | '/books'
     | '/contact'
-    | '/authors/everly-quinn'
-    | '/authors/scarlett-vale'
-    | '/authors/zora-monroe'
-    | '/books/i-accidentally-married-a-vampire'
+    | '/authors/$authorSlug'
+    | '/books/$bookSlug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -146,25 +121,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/books': {
-      id: '/books'
-      path: '/books'
-      fullPath: '/books'
-      preLoaderRoute: typeof BooksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/authors': {
-      id: '/authors'
-      path: '/authors'
-      fullPath: '/authors'
-      preLoaderRoute: typeof AuthorsRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -174,66 +135,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/authors': {
+      id: '/authors'
+      path: '/authors'
+      fullPath: '/authors'
+      preLoaderRoute: typeof AuthorsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/books/i-accidentally-married-a-vampire': {
-      id: '/books/i-accidentally-married-a-vampire'
-      path: '/i-accidentally-married-a-vampire'
-      fullPath: '/books/i-accidentally-married-a-vampire'
-      preLoaderRoute: typeof BooksIAccidentallyMarriedAVampireRouteImport
+    '/books': {
+      id: '/books'
+      path: '/books'
+      fullPath: '/books'
+      preLoaderRoute: typeof BooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/authors/$authorSlug': {
+      id: '/authors/$authorSlug'
+      path: '/$authorSlug'
+      fullPath: '/authors/$authorSlug'
+      preLoaderRoute: typeof AuthorsAuthorSlugRouteImport
+      parentRoute: typeof AuthorsRoute
+    }
+    '/books/$bookSlug': {
+      id: '/books/$bookSlug'
+      path: '/$bookSlug'
+      fullPath: '/books/$bookSlug'
+      preLoaderRoute: typeof BooksBookSlugRouteImport
       parentRoute: typeof BooksRoute
-    }
-    '/authors/zora-monroe': {
-      id: '/authors/zora-monroe'
-      path: '/zora-monroe'
-      fullPath: '/authors/zora-monroe'
-      preLoaderRoute: typeof AuthorsZoraMonroeRouteImport
-      parentRoute: typeof AuthorsRoute
-    }
-    '/authors/scarlett-vale': {
-      id: '/authors/scarlett-vale'
-      path: '/scarlett-vale'
-      fullPath: '/authors/scarlett-vale'
-      preLoaderRoute: typeof AuthorsScarlettValeRouteImport
-      parentRoute: typeof AuthorsRoute
-    }
-    '/authors/everly-quinn': {
-      id: '/authors/everly-quinn'
-      path: '/everly-quinn'
-      fullPath: '/authors/everly-quinn'
-      preLoaderRoute: typeof AuthorsEverlyQuinnRouteImport
-      parentRoute: typeof AuthorsRoute
     }
   }
 }
 
 interface AuthorsRouteChildren {
-  AuthorsEverlyQuinnRoute: typeof AuthorsEverlyQuinnRoute
-  AuthorsScarlettValeRoute: typeof AuthorsScarlettValeRoute
-  AuthorsZoraMonroeRoute: typeof AuthorsZoraMonroeRoute
+  AuthorsAuthorSlugRoute: typeof AuthorsAuthorSlugRoute
 }
 
 const AuthorsRouteChildren: AuthorsRouteChildren = {
-  AuthorsEverlyQuinnRoute: AuthorsEverlyQuinnRoute,
-  AuthorsScarlettValeRoute: AuthorsScarlettValeRoute,
-  AuthorsZoraMonroeRoute: AuthorsZoraMonroeRoute,
+  AuthorsAuthorSlugRoute: AuthorsAuthorSlugRoute,
 }
 
 const AuthorsRouteWithChildren =
   AuthorsRoute._addFileChildren(AuthorsRouteChildren)
 
 interface BooksRouteChildren {
-  BooksIAccidentallyMarriedAVampireRoute: typeof BooksIAccidentallyMarriedAVampireRoute
+  BooksBookSlugRoute: typeof BooksBookSlugRoute
 }
 
 const BooksRouteChildren: BooksRouteChildren = {
-  BooksIAccidentallyMarriedAVampireRoute:
-    BooksIAccidentallyMarriedAVampireRoute,
+  BooksBookSlugRoute: BooksBookSlugRoute,
 }
 
 const BooksRouteWithChildren = BooksRoute._addFileChildren(BooksRouteChildren)
@@ -248,13 +204,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-router' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

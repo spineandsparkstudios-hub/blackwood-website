@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Mail } from "lucide-react";
-import { MAILING_LIST_ACTION } from "../lib/site-config";
+import { MAILING_LIST_ACTION, MAILING_LIST_URL } from "../lib/site-config";
 
 type Props = {
   /** layout: "row" = input + button side by side; "stack" = stacked */
@@ -24,6 +24,22 @@ export default function NewsletterForm({
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const connected = MAILING_LIST_ACTION.length > 0;
+
+  // No direct API action configured -> send readers to the hosted signup page
+  // so subscriptions are actually captured.
+  if (!connected) {
+    return (
+      <a
+        href={MAILING_LIST_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#C9A24B] to-[#E8B4C0] px-7 py-3 text-sm font-semibold tracking-wider text-[#1A1418] uppercase shadow-lg shadow-black/20 transition-opacity hover:opacity-95 sm:w-auto"
+      >
+        <Mail className="h-4 w-4" />
+        {buttonLabel}
+      </a>
+    );
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
